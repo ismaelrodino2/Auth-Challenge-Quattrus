@@ -1,6 +1,8 @@
 "use client";
 
+import { CreateUserFormSchema, createUserFormSchema } from "@/utils/schemas";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 type Inputs = {
   company: string;
@@ -13,7 +15,9 @@ export default function SignIn() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>();
+  } = useForm<CreateUserFormSchema>({
+    resolver: zodResolver(createUserFormSchema),
+  });
 
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
