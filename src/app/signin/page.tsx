@@ -1,7 +1,8 @@
 "use client";
-import {  Typography, FormControl, TextField, Box } from "@mui/material";
+import { Typography, FormControl, TextField, Box, Link } from "@mui/material";
 import logoSimplify from "./../../../public/assets/logoSimplify.svg";
-import { useSignIn } from "./hooks/use-signin-hook";
+import logoQuattrus from "./../../../public/assets/logoQuattrus.svg";
+import { useSignIn } from "./hooks/useSignIn";
 import { Button } from "../components/button";
 
 export default function SignIn() {
@@ -22,11 +23,10 @@ export default function SignIn() {
         <Box
           sx={{
             borderRadius: "20px",
-            background: "linear-gradient(315deg, background.default, grey.100)",
-            boxShadow: "-19px -19px 38px #bebebe, 19px 19px 38px #ffffff",
+            backgroundImage: "linear-gradient(315deg, #ffffff, #F1F3F4)",
+            boxShadow: "-5px -5px 38px #bebebe, 5px 5px 38px #ffffff",
             display: "flex",
             flexDirection: "column",
-            alignItems: "center", // Vertically center the content
             position: "fixed",
             left: "20%",
             top: "50%",
@@ -35,90 +35,125 @@ export default function SignIn() {
             maxWidth: "100%",
           }}
         >
-          <Typography
-            color="primary"
-            align="left"
-            gutterBottom={true}
-            variant="inherit"
-            sx={{ fontWeight: "bold" }}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "20px",
+            }}
           >
-            Seja bem-vindo!
-          </Typography>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col gap-4"
+            <img className="max-h-20" src={logoSimplify.src}></img>
+            <img className="max-h-11 pr-5" src={logoQuattrus.src}></img>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-start",
+              marginTop: "20px",
+            }}
           >
-            <TextField
-              sx={{
-                borderRadius: "8px",
-                color: "primary.main",
-                fontSize: "12px",
-                paddingTop: 0,
-                paddingBottom: "2px",
-              }}
-              variant="standard"
-              color="primary"
-              label="Empresa"
-              {...register("company", { required: true })}
-            />
-            {errors?.company && (
-              <Typography color="error">{errors.company.message}</Typography>
-            )}
-            <TextField
-              sx={{
-                color: "primary.main",
-                fontSize: "12px",
-                paddingTop: 0,
-                paddingBottom: "2px",
-                // "& .MuiInput-input": {
-                //   backgroundColor: "grey.100",
-                //   borderRadius: "4px",
-                // },
-              }}
-              variant="standard"
-              color="primary"
-              label="Nome"
-              {...register("username", { required: true })}
-            />
-            {errors?.username && (
-              <Typography color="error">{errors.username.message}</Typography>
-            )}
-            <TextField
-              sx={{
-                borderRadius: "8px",
-                color: "primary.main",
-                fontSize: "12px",
-                paddingTop: 0,
-                paddingBottom: "2px",
-              }}
-              variant="standard"
-              color="primary"
-              label="Senha"
-              {...register("password", { required: true })}
-            />
-            {errors?.password && (
-              <Typography color="error">{errors.password.message}</Typography>
-            )}
-            <Button
-              loading={loading}
-              sx={{
-                borderRadius: "8px",
-                backgroundColor: "primary.main",
-                color: "common.white",
-                padding: "7px 10px",
-                fontSize: "12px",
-                maxWidth: "115px",
-                "&:hover": {
-                  color: "common.black",
-                  borderColor: "grey.400",
-                  border: "1px",
-                },
-              }}
-              type="submit"
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="flex flex-col gap-1"
+              style={{ width: "100%" }}
             >
-              Entrar
-            </Button>
-          </form>
+              <Typography
+                color="primary"
+                align="left"
+                gutterBottom={true}
+                variant="inherit"
+                sx={{ fontWeight: "bold", textTransform: "uppercase" }}
+              >
+                Seja bem-vindo!
+              </Typography>
+              <TextField
+                sx={{
+                  borderRadius: "8px",
+                  color: "primary.main",
+                  fontSize: "12px",
+                  paddingTop: 0,
+                  paddingBottom: "2px",
+                }}
+                variant="standard"
+                color="primary"
+                label="Empresa"
+                {...register("company", { required: true })}
+              />
+              {errors?.company && (
+                <Typography variant="caption" color="error">
+                  {errors.company.message}
+                </Typography>
+              )}
+              <TextField
+                sx={{
+                  color: "primary.main",
+                  fontSize: "12px",
+                  paddingTop: 0,
+                  paddingBottom: "2px",
+                  // "& .MuiInput-input": {
+                  //   backgroundColor: "grey.100",
+                  //   borderRadius: "4px",
+                  // },
+                }}
+                variant="standard"
+                color="primary"
+                label="Nome"
+                {...register("username", { required: true })}
+              />
+              {errors?.username && (
+                <Typography variant="caption" color="error">
+                  {errors.username.message}
+                </Typography>
+              )}
+              <TextField
+                sx={{
+                  borderRadius: "8px",
+                  color: "primary.main",
+                  fontSize: "12px",
+                  paddingTop: 0,
+                  paddingBottom: "2px",
+                }}
+                variant="standard"
+                color="primary"
+                label="Senha"
+                {...register("password", { required: true })}
+              />
+              {errors?.password && (
+                <Typography variant="caption" color="error">
+                  {errors.password.message}
+                </Typography>
+              )}
+              <Button
+                loading={loading}
+                sx={{
+                  borderRadius: "8px",
+                  backgroundColor: "primary.main",
+                  color: "common.white",
+                  padding: "7px 10px",
+                  marginTop: "30px",
+                  fontSize: "12px",
+                  maxWidth: "115px",
+                  "&:hover": {
+                    color: "common.black",
+                    borderColor: "grey.400",
+                    border: "1px",
+                  },
+                }}
+                type="submit"
+              >
+                Entrar
+              </Button>
+              <Typography
+                variant="caption"
+                color="primary.main"
+                sx={{ fontWeight: "bold", marginTop: '10px'}}
+              >
+                <Link href="/forgot-password" underline="always">
+                  Esqueceu a senha?
+                </Link>
+              </Typography>
+            </form>
+          </Box>
         </Box>
       </div>
     </>
