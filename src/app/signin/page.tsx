@@ -1,18 +1,12 @@
 "use client";
 
 import { CreateUserFormSchema, createUserFormSchema } from "@/lib/schemas";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-//import { cn } from "@/lib/utils";
-import { SignInHook } from "./hooks/signin-hook";
+import { useSignIn } from "./hooks/useSignIn";
 import { useState } from "react";
-import {
-  Input,
-  Button,
-  Typography,
-  FormControl,
-  TextField,
-} from "@mui/material";
+import { Button, Typography, FormControl, TextField } from "@mui/material";
+import { error } from "console";
 
 export default function SignIn() {
   const [loading, setLoading] = useState(false);
@@ -33,7 +27,7 @@ export default function SignIn() {
   async function onSubmit(data: CreateUserFormSchema) {
     setLoading(true);
     try {
-      const user = await SignInHook(data);
+      const user = await useSignIn(data);
       console.log("asdasd", user);
     } catch (err) {
       console.log(err);
@@ -67,6 +61,11 @@ export default function SignIn() {
           label="Empresa"
           {...register("company", { required: true })}
         />
+        {errors?.company && (
+          <Typography color="error">
+            {errors.company.message}
+          </Typography>
+        )}
         <TextField
           sx={{
             color: "primary.main",
@@ -83,8 +82,12 @@ export default function SignIn() {
           label="Nome"
           {...register("username", { required: true })}
         />
-
-<TextField
+        {errors?.username && (
+          <Typography color="error">
+            {errors.username.message}
+          </Typography>
+        )}
+        <TextField
           sx={{
             borderRadius: "8px",
             color: "primary.main",
@@ -97,7 +100,11 @@ export default function SignIn() {
           label="Senha"
           {...register("password", { required: true })}
         />
-
+        {errors?.password && (
+          <Typography color="error">
+            {errors.password.message}
+          </Typography>
+        )}
         <Button
           sx={{
             borderRadius: "8px",
@@ -109,7 +116,7 @@ export default function SignIn() {
             "&:hover": {
               color: "common.black",
               borderColor: "grey.400",
-              border: "1px"
+              border: "1px",
             },
           }}
           type="submit"

@@ -1,6 +1,6 @@
 import { CreateUserFormSchema } from "@/lib/schemas";
 
-export async function SignInHook(data: CreateUserFormSchema) {
+export async function useSignIn(data: CreateUserFormSchema) {
   console.log(data);
   const user = await fetch("api/user?username=" + data.username);
   console.log("asd", user);
