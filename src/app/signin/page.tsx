@@ -1,42 +1,11 @@
 "use client";
-
-import { CreateUserFormSchema, createUserFormSchema } from "@/lib/schemas";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useSignIn } from "./hooks/useSignIn";
-import { useState } from "react";
-import { Button, Typography, FormControl, TextField, Box } from "@mui/material";
-import { error } from "console";
-import logo from "./../../../assets/logo.png";
+import {  Typography, FormControl, TextField, Box } from "@mui/material";
 import logoSimplify from "./../../../public/assets/logoSimplify.svg";
+import { useSignIn } from "./hooks/use-signin-hook";
+import { Button } from "../components/button";
 
 export default function SignIn() {
-  const [loading, setLoading] = useState(false);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<CreateUserFormSchema>({
-    resolver: zodResolver(createUserFormSchema),
-    defaultValues: {
-      company: "",
-      password: "",
-      username: "",
-    },
-  });
-
-  async function onSubmit(data: CreateUserFormSchema) {
-    setLoading(true);
-    try {
-      const user = await useSignIn(data);
-      console.log("asdasd", user);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setLoading(false);
-    }
-  }
+  const { register, handleSubmit, errors, loading, onSubmit } = useSignIn();
 
   return (
     <>
@@ -55,18 +24,17 @@ export default function SignIn() {
             borderRadius: "20px",
             background: "linear-gradient(315deg, background.default, grey.100)",
             boxShadow: "-19px -19px 38px #bebebe, 19px 19px 38px #ffffff",
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center', // Vertically center the content
-            position: 'fixed',
-            left: '20%',
-            top: '50%', 
-            transform: 'translateY(-50%)',
-            padding: '30px',
-            maxWidth: '100%'
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center", // Vertically center the content
+            position: "fixed",
+            left: "20%",
+            top: "50%",
+            transform: "translateY(-50%)",
+            padding: "30px",
+            maxWidth: "100%",
           }}
         >
-         
           <Typography
             color="primary"
             align="left"
@@ -76,7 +44,10 @@ export default function SignIn() {
           >
             Seja bem-vindo!
           </Typography>
-          <FormControl onSubmit={handleSubmit(onSubmit)} sx={{ gap: '10px' }}>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col gap-4"
+          >
             <TextField
               sx={{
                 borderRadius: "8px",
@@ -129,6 +100,7 @@ export default function SignIn() {
               <Typography color="error">{errors.password.message}</Typography>
             )}
             <Button
+              loading={loading}
               sx={{
                 borderRadius: "8px",
                 backgroundColor: "primary.main",
@@ -146,7 +118,7 @@ export default function SignIn() {
             >
               Entrar
             </Button>
-          </FormControl>
+          </form>
         </Box>
       </div>
     </>
