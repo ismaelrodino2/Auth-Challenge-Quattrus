@@ -9,7 +9,6 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { username, password, company } = createUserFormSchema.parse(body);
 
-
     const user = await prisma.user.findUnique({
       where: {
         username,
@@ -20,7 +19,9 @@ export async function POST(req: Request) {
 
     //token
     if (user) {
-      const token = await new jose.SignJWT(user)
+      const { password, ...userWithoutPassword } = user;
+
+      const token = await new jose.SignJWT(userWithoutPassword)
         .setProtectedHeader({ alg: "HS256", typ: "JWT" })
         .sign(new TextEncoder().encode(process.env.JWT_SECRET));
 
@@ -31,9 +32,8 @@ export async function POST(req: Request) {
         httpOnly: true,
         path: "/",
       });
+      return NextResponse.json({ user }, { status: 200 });
     }
-
-    return NextResponse.json({ user }, { status: 200 });
   } catch (err) {
     console.error(err);
     return NextResponse.json(

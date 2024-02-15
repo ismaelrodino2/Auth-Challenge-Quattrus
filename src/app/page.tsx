@@ -1,21 +1,25 @@
+import { User } from "@prisma/client";
 import { jwtVerify } from "jose";
 import { cookies } from "next/headers";
+import { notFound } from "next/navigation";
 
 export default async function Home() {
   const cookie = cookies().get("auth");
 
-  let user;
-  if (cookie) {
+  if (!cookie) return notFound();
 
-    user = await jwtVerify(
-      cookie.value,
-      new TextEncoder().encode(process.env.JWT_SECRET)
-    );
-  }
+  let user: Omit<User, "password"> | null;
+  const token: { payload: Omit<User, "password"> | null } = await jwtVerify(
+    cookie.value,
+    new TextEncoder().encode(process.env.JWT_SECRET)
+  );
+  user = token.payload;
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {JSON.stringify(user)}
+    <main className="flex min-h-screen flex-col items-center gap-4 justify-center">
+      <h1 className="text-3xl font-medium">Olá {user?.username}</h1>
+      <p>Empresa:{user?.company}</p>
+      <p>ID:{user?.id}</p>
     </main>
   );
 }
