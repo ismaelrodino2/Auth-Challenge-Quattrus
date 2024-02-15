@@ -1,40 +1,12 @@
 "use client";
-
-import { CreateUserFormSchema, createUserFormSchema } from "@/lib/schemas";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useSignIn } from "./hooks/useSignIn";
-import { useState } from "react";
-import { Button, Typography, FormControl, TextField } from "@mui/material";
-import { error } from "console";
+import { Typography, TextField } from "@mui/material";
+import { useSignIn } from "./hooks/use-signin-hook";
+import { Button } from "../components/button";
 
 export default function SignIn() {
-  const [loading, setLoading] = useState(false);
+  const { register, handleSubmit, errors, loading, onSubmit } = useSignIn();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<CreateUserFormSchema>({
-    resolver: zodResolver(createUserFormSchema),
-    defaultValues: {
-      company: "",
-      password: "",
-      username: "",
-    },
-  });
 
-  async function onSubmit(data: CreateUserFormSchema) {
-    setLoading(true);
-    try {
-      const user = await useSignIn(data);
-      console.log("asdasd", user);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setLoading(false);
-    }
-  }
 
   return (
     <>
@@ -47,7 +19,7 @@ export default function SignIn() {
       >
         Seja bem-vindo!
       </Typography>
-      <FormControl onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
         <TextField
           sx={{
             borderRadius: "8px",
@@ -59,12 +31,12 @@ export default function SignIn() {
           variant="standard"
           color="primary"
           label="Empresa"
-          {...register("company", { required: true })}
+          {...register("company")}
+          error={Boolean(errors.company)}
+          helperText={errors.company?.message}
         />
         {errors?.company && (
-          <Typography color="error">
-            {errors.company.message}
-          </Typography>
+          <Typography color="error">{errors.company.message}</Typography>
         )}
         <TextField
           sx={{
@@ -72,20 +44,17 @@ export default function SignIn() {
             fontSize: "12px",
             paddingTop: 0,
             paddingBottom: "2px",
-            // "& .MuiInput-input": {
-            //   backgroundColor: "grey.100",
-            //   borderRadius: "4px",
-            // },
           }}
+          {...register("password")}
+          error={Boolean(errors.username)}
+          helperText={errors.username?.message}
           variant="standard"
           color="primary"
-          label="Nome"
-          {...register("username", { required: true })}
+          label="Nome de usuário"
+          {...register("username")}
         />
         {errors?.username && (
-          <Typography color="error">
-            {errors.username.message}
-          </Typography>
+          <Typography color="error">{errors.username.message}</Typography>
         )}
         <TextField
           sx={{
@@ -95,17 +64,20 @@ export default function SignIn() {
             paddingTop: 0,
             paddingBottom: "2px",
           }}
+          label="Senha"
+          {...register("password")}
+          type="password"
+          error={Boolean(errors.password)}
+          helperText={errors.password?.message}
           variant="standard"
           color="primary"
-          label="Senha"
-          {...register("password", { required: true })}
+          {...register("password")}
         />
         {errors?.password && (
-          <Typography color="error">
-            {errors.password.message}
-          </Typography>
+          <Typography color="error">{errors.password.message}</Typography>
         )}
         <Button
+          loading={loading}
           sx={{
             borderRadius: "8px",
             backgroundColor: "primary.main",
@@ -123,7 +95,7 @@ export default function SignIn() {
         >
           Enviar
         </Button>
-      </FormControl>
+      </form>
     </>
   );
 }

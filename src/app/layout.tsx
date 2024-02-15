@@ -4,6 +4,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "@/lib/theme";
+import { SnackbarProvider } from "@/contexts/snackbar-context";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          <SnackbarProvider>
+            <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          </SnackbarProvider>
         </AppRouterCacheProvider>
       </body>
     </html>
