@@ -18,8 +18,7 @@ export function Button({
   return (
     <MuiButton {...muiButtonProps}>
       <div className="flex gap-2">
-        {loading && <CircularProgress color="inherit" size={20} /> }
-        {children}
+        {loading ? <CircularProgress color="inherit" size={20} /> : children}
       </div>
     </MuiButton>
   );

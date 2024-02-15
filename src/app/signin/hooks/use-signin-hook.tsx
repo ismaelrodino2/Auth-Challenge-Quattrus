@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CreateUserFormSchema, createUserFormSchema } from "@/lib/schemas";
 import { useOpenSnackbar } from "@/contexts/snackbar-context";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export function useSignIn() {
   const [loading, setLoading] = useState(false);
