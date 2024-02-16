@@ -25,9 +25,13 @@ const config: Config = {
       charcoal: "#31353c", // 'Menu lateral'
       steelGray: "#5a5d63", // Hover state for sidebar menu
 
+      primaryMain: "#009DA4",
+      primaryLight: "#7AC8CC",
+      
       // EGU
       cloudGray: "#F1F3F4",
-      mintGreen: "#00BD8D",
+      successMain: "#00BD8D",
+      successLight: "#E6F9F4",
       sunflowerYellow: "#E8B722",
       coralRed: "#FF5858",
 
