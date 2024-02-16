@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import Link from "next/link";
+import { NavBar } from "../components/navbar";
+import TopBar from "../components/navbarTop/navBarTop";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -14,6 +16,8 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <>
+    <TopBar/>
     <section className="px-7 flex gap-7 flex-col">
       <div className=" pt-6">
         {/* breadcrumb */}
@@ -39,5 +43,6 @@ export default function DashboardLayout({
       </div>
       {children}
     </section>
+    </>
   );
 }
