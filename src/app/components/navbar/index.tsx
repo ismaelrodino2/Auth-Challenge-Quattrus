@@ -1,10 +1,8 @@
-import TopBar from "../navbarTop/top-bar";
-import { LeftSideNav } from "./left-side-nav";
+import TopBar from "../navbarTop/navBarTop";
 
 export function NavBar() {
   return (
     <div>
-      {/* <LeftSideNav /> */}
       <TopBar/>
     </div>
   );

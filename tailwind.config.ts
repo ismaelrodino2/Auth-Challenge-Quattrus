@@ -9,19 +9,18 @@ const config: Config = {
   theme: {
     colors: {
       //Softwares:
-      managementBlue: "#00b8ff", // 'gestiona'
-      initializationGray: "#dcdcdc", // 'start'
-      skyBlue: "#008cff", // 'lite'
-      navyBlue: "#003e9c", // 'standard'
-      amethyst: "#7921a1", // 'master'
-      onyx: "#212121", // 'expert'
-      orchid: "#542ca7", // 'bonus'
-      sunsetOrange: "#ec801b", // 'monitor'
-      wineRed: "#970153", // 'project'
-      midnightBlue: "#000059", // 'conexa'
-      oceanGreen: "#22786b", // 'okr' (Objectives and Key Results)
-      limeGreen: "#8dc63f", // 'diário'
-      aquamarine: "#009da4", // 'quattrus'
+      gestiona: "#008CFF",
+      start: "#CDCDCD",
+      lite: "#F5C239",
+      standard: "#003E9C",
+      master: "#7921A1",
+      expert: "#212121",
+      bonus: "#542CA7",
+      monitor: "#EC801B",
+      project: "#970F53",
+      conexa: "#000059",
+      okr: "#22786B",
+      diario: "#8DC63F",
       iceberg: "#7ac8cc", // Hover state for header icons
       charcoal: "#31353c", // 'Menu lateral'
       steelGray: "#5a5d63", // Hover state for sidebar menu
