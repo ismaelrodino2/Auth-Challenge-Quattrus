@@ -24,7 +24,7 @@ export default function SignIn() {
           sx={{
             borderRadius: "20px",
             backgroundImage: "linear-gradient(315deg, #ffffff, #F1F3F4)",
-            boxShadow: "-5px -5px 38px #bebebe, 5px 5px 38px #ffffff",
+            //boxShadow: "-5px -5px 38px #bebebe, 5px 5px 38px #ffffff",
             display: "flex",
             flexDirection: "column",
             position: "fixed",
@@ -116,6 +116,7 @@ export default function SignIn() {
                 variant="standard"
                 color="primary"
                 label="Senha"
+                type="password"
                 {...register("password", { required: true })}
               />
               {errors?.password && (
