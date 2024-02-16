@@ -1,9 +1,8 @@
 "use client";
-import { Typography, FormControl, TextField, Box, Link } from "@mui/material";
-import logoSimplify from "./../../../public/assets/logoSimplify.svg";
-import logoQuattrus from "./../../../public/assets/logoQuattrus.svg";
+import { Typography, TextField, Link } from "@mui/material";
 import { useSignIn } from "./hooks/useSignIn";
 import { Button } from "../components/button";
+import Image from "next/image";
 
 export default function SignIn() {
   const { register, handleSubmit, errors, loading, onSubmit } = useSignIn();
@@ -11,47 +10,18 @@ export default function SignIn() {
   return (
     <>
       <div
-        style={{
-          backgroundImage: `url(${logoSimplify.src})`,
-          backgroundSize: "contain",
-          backgroundPosition: "right",
-          backgroundRepeat: "no-repeat",
-          height: "100vh",
-          overflow: "hidden",
-        }}
+        className={`bg-[url('/assets/logoSimplify.svg')] bg-contain bg-right bg-no-repeat h-screen overflow-hidden`}
       >
-        <Box
-          sx={{
-            borderRadius: "20px",
-            backgroundImage: "linear-gradient(315deg, #ffffff, #F1F3F4)",
-            boxShadow: "-5px -5px 38px #bebebe, 5px 5px 38px #ffffff",
-            display: "flex",
-            flexDirection: "column",
-            position: "fixed",
-            left: "20%",
-            top: "50%",
-            transform: "translateY(-50%)",
-            padding: "30px",
-            maxWidth: "100%",
-          }}
-        >
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: "20px",
-            }}
-          >
-            <img className="max-h-20" src={logoSimplify.src}></img>
-            <img className="max-h-11 pr-5" src={logoQuattrus.src}></img>
-          </Box>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "flex-start",
-              marginTop: "20px",
-            }}
-          >
+        <div className="rounded-[20px] bg-gradient-to-br from-white to-[#F1F3F4] shadow-[5px_5px_38px_#ffffff] flex flex-col fixed left-[20%] top-[50%] -translate-y-[50%] p-[30px] max-w-full">
+          <div className="flex items-center gap-[20px]">
+            <div className="relative max-h-20">
+              <Image src="/assets/logoSimplify.svg" alt="Logo Simplify" fill />
+            </div>
+            <div className="relative max-h-11 pr-5">
+              <Image src="/assets/logoQuattrus.svg" alt="Logo Quattrus" fill />
+            </div>
+          </div>
+          <div className="flex justify-start mt-[20px]">
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col gap-1"
@@ -146,15 +116,15 @@ export default function SignIn() {
               <Typography
                 variant="caption"
                 color="primary.main"
-                sx={{ fontWeight: "bold", marginTop: '10px'}}
+                sx={{ fontWeight: "bold", marginTop: "10px" }}
               >
                 <Link href="/forgot-password" underline="always">
                   Esqueceu a senha?
                 </Link>
               </Typography>
             </form>
-          </Box>
-        </Box>
+          </div>
+        </div>
       </div>
     </>
   );
