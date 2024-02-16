@@ -27,7 +27,10 @@ const config: Config = {
 
       primaryMain: "#009DA4",
       primaryLight: "#7AC8CC",
-      
+
+      textDark: "#31353C",
+      textLight: "#FFFFFF",
+
       // EGU
       cloudGray: "#F1F3F4",
       successMain: "#00BD8D",

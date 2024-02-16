@@ -39,7 +39,7 @@ const TopBar: React.FC = () => {
       </div>
       <div className="flex flex-1 items-center h-12">
         <img className="max-h-4 me-2 ms-4" src={logoQuattrus.src}></img>
-        <Typography variant="h5" color="common.white">
+        <Typography variant="h6" color="common.white" fontWeight="normal">
           | Project
         </Typography>
       </div>
