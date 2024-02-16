@@ -1,7 +1,7 @@
 "use client";
 import { Typography, FormControl, TextField, Box, Link } from "@mui/material";
 import logoSimplify from "./../../../public/assets/logoSimplify.svg";
-import logoQuattrus from "./../../../public/assets/logoQuattrus.svg";
+import logoQuattrus from "./../../../public/assets/logoQuattrusGreen.svg";
 import { useSignIn } from "./hooks/useSignIn";
 import { Button } from "../components/button";
 
@@ -24,7 +24,7 @@ export default function SignIn() {
           sx={{
             borderRadius: "20px",
             backgroundImage: "linear-gradient(315deg, #ffffff, #F1F3F4)",
-            //boxShadow: "-5px -5px 38px #bebebe, 5px 5px 38px #ffffff",
+            //boxShadow: "-1px -1px 1px #bebebe, 1px 1px 1px #ffffff",
             display: "flex",
             flexDirection: "column",
             position: "fixed",
