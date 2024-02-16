@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
+import { NavBar } from "../components/navbar";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -11,5 +12,10 @@ export default function DashboardLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <section>{children}</section>;
+  return (
+    <section>
+      <NavBar />
+      {children}
+    </section>
+  );
 }
