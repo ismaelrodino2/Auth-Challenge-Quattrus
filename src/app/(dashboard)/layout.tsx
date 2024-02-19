@@ -16,7 +16,7 @@ export default function DashboardLayout({
 }>) {
   return (
     <NavBarSide>
-      <section className="px-7 flex gap-7 flex-col">
+      <section className="px-7 flex gap-7 flex-col h-screen">
         <div className=" pt-6">
           {/* breadcrumb */}
           <div className="text-lg flex items-center">

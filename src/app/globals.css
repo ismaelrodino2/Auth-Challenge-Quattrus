@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.mui-1q5von5-MuiPaper-root-MuiDrawer-paper {
+  position: static !important;
+}
+
+.mui-2dum1v-MuiDrawer-docked{
+    height: 100%  !important;
+
+}
