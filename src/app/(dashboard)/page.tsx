@@ -17,7 +17,7 @@ export default async function Home() {
   user = token.payload;
 
   return (
-    <main className="">
+    <main className="overflow-x-hidden">
       <HomeScreen />
     </main>
   );

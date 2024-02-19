@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { BaseSyntheticEvent, ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CreateUserFormSchema, createUserFormSchema } from "@/lib/schemas";
@@ -22,7 +22,12 @@ export function useSignIn() {
     },
   });
 
-  const onSubmit = async (data: CreateUserFormSchema) => {
+  const onSubmit = async (
+    data: CreateUserFormSchema,
+    event?: BaseSyntheticEvent<object, any, any>
+  ) => {
+    event?.preventDefault();
+
     setLoading(true);
     try {
       const response = await fetch("/api/user", {

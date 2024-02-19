@@ -1,16 +1,5 @@
-"use client";
-
-import {
-  Avatar,
-  Box,
-  IconButton,
-  Menu,
-  MenuItem,
-  Toolbar,
-  Tooltip,
-  Typography,
-} from "@mui/material";
-import MoreIcon from "@mui/icons-material/MoreVert";
+"use client";;
+import { Avatar, IconButton, Menu, MenuItem, Toolbar, Tooltip, Typography } from "@mui/material";
 import React from "react";
 import logoQuattrus from "./../../../../public/assets/logoQuattrusWhite.svg";
 import logoProject from "./../../../../public/assets/logoProject.svg";
@@ -33,9 +22,9 @@ const TopBar: React.FC = () => {
   };
 
   return (
-    <div className="bg-primaryMain flex items-center max-h-[50px]">
-      <div className="flex flex-none  items-center justify-center bg-project">
-        <img className="max-h-[50px] p-4 flex" src={logoProject.src}></img>
+    <div className="bg-primaryMain flex items-center">
+      <div className="h-full items-center justify-center bg-project">
+        <img className="h-full md:py-[21px] md:px-[16.4px] py-[22px] px-[12.4px]" src={logoProject.src}></img>
       </div>
       <div className="flex flex-1 items-center h-12">
         <img className="max-h-4 me-2 ms-4" src={logoQuattrus.src}></img>
