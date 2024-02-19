@@ -17,6 +17,7 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import logoProject from "./../../../../public/assets/logoProject.svg";
+import TopBar from "../navbarTop/navBarTop";
 
 const drawerWidth = 240;
 
@@ -93,15 +94,15 @@ export function NavBarSide({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className="flex flex-row h-full">
+    <div className="flex flex-row h-full w-full">
       <div className="flex flex-col">
-        <div className="flex">asdasdas</div>
         <Drawer
           variant="permanent"
           open={open}
           PaperProps={{
             sx: {
               backgroundColor: "#31353C",
+              marginTop: "64px",
             },
           }}
         >
