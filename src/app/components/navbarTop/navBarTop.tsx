@@ -11,8 +11,8 @@ import {
 import React from "react";
 import logoQuattrus from "./../../../../public/assets/logoQuattrusWhite.svg";
 import logoProject from "./../../../../public/assets/logoProject.svg";
-import { deleteCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
+import { DeleteCookies } from "./delete-cookie";
 
 const TopBar: React.FC = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -28,7 +28,7 @@ const TopBar: React.FC = () => {
   };
 
   const handleSignOut = () => {
-    deleteCookie("auth", { path: "/path", domain: ".yourdomain.com" });
+    DeleteCookies();
     router.push("/");
   };
 
@@ -72,13 +72,13 @@ const TopBar: React.FC = () => {
           open={Boolean(anchorElUser)}
           onClose={handleCloseUserMenu}
         >
-          <MenuItem onClick={handleCloseUserMenu}>
+          {settings.map((setting) => (
+            <MenuItem key={setting} onClick={handleCloseUserMenu}>
+              <Typography textAlign="center">{setting}</Typography>
+            </MenuItem>
+          ))}
+          <MenuItem>
             <button onClick={handleSignOut}>Logout</button>
-            {settings.map((setting) => (
-              <Typography key={setting} textAlign="center">
-                {setting}
-              </Typography>
-            ))}
           </MenuItem>
         </Menu>
       </Toolbar>
