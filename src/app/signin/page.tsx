@@ -5,24 +5,16 @@ import logoQuattrus from "./../../../public/assets/logoQuattrusGreen.svg";
 import { useSignIn } from "./hooks/useSignIn";
 import { Button } from "../components/button";
 import styles from "./styles.module.css";
-import { useState } from "react";
+import { useEffect } from "react";
 
 export default function SignIn() {
   const { register, handleSubmit, errors, loading, onSubmit } = useSignIn();
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
 
   return (
     <>
-      <div className={styles.bgStyle}></div>
+      <div className={styles.bgStyle}>
+      </div>
+
       <Box
         sx={{
           borderRadius: "20px",
@@ -80,13 +72,13 @@ export default function SignIn() {
               variant="standard"
               color="primary"
               label="Empresa"
-              {...register("company", { required: true })}
+              // {...register("company", { required: true })}
             />
-            {errors?.company && (
+            {/* {errors?.company && (
               <Typography variant="caption" color="error">
                 {errors.company.message}
               </Typography>
-            )}
+            )} */}
             <TextField
               sx={{
                 color: "primary.main",
@@ -101,13 +93,13 @@ export default function SignIn() {
               variant="standard"
               color="primary"
               label="Nome"
-              {...register("username", { required: true })}
+              // {...register("username", { required: true })}
             />
-            {errors?.username && (
+            {/* {errors?.username && (
               <Typography variant="caption" color="error">
                 {errors.username.message}
               </Typography>
-            )}
+            )} */}
             <TextField
               sx={{
                 borderRadius: "8px",
@@ -120,13 +112,13 @@ export default function SignIn() {
               color="primary"
               label="Senha"
               type="password"
-              {...register("password", { required: true })}
+              // {...register("password", { required: true })}
             />
-            {errors?.password && (
+            {/* {errors?.password && (
               <Typography variant="caption" color="error">
                 {errors.password.message}
               </Typography>
-            )}
+            )} */}
             <Button
               loading={loading}
               sx={{

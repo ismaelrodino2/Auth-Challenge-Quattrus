@@ -15,9 +15,6 @@ import { deleteCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 
 const TopBar: React.FC = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
