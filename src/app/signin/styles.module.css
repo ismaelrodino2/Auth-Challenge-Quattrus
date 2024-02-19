@@ -1,0 +1,22 @@
+.bgStyle {
+  background-image: url("./../../../public/assets/logoSimplify.svg");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: auto 110vh;
+  height: 100vh;
+  overflow: hidden;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-fill-mode: forwards; 
+  
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1; 
+  }
+}
+
