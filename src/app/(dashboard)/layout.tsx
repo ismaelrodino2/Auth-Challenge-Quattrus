@@ -19,7 +19,7 @@ export default function DashboardLayout({
     <>
       <TopBar />
       <NavBarSide>
-        <section className="px-7 flex gap-7 flex-col overflow-hidden">
+        <section className="px-7 flex gap-7 flex-col overflow-hidden w-full">
           <div className=" pt-6">
             {/* breadcrumb */}
             <div className="text-lg flex items-center">
