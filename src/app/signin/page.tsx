@@ -72,7 +72,7 @@ export default function SignIn() {
               variant="standard"
               color="primary"
               label="Empresa"
-              // {...register("company", { required: true })}
+              {...register("company", { required: true })}
             />
             {/* {errors?.company && (
               <Typography variant="caption" color="error">
@@ -93,7 +93,7 @@ export default function SignIn() {
               variant="standard"
               color="primary"
               label="Nome"
-              // {...register("username", { required: true })}
+              {...register("username", { required: true })}
             />
             {/* {errors?.username && (
               <Typography variant="caption" color="error">
@@ -112,7 +112,7 @@ export default function SignIn() {
               color="primary"
               label="Senha"
               type="password"
-              // {...register("password", { required: true })}
+              {...register("password", { required: true })}
             />
             {/* {errors?.password && (
               <Typography variant="caption" color="error">
