@@ -20,7 +20,7 @@ async function getData() {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      mode: "no-cors",
+      // mode: "no-cors",
     }
   );
   const json = await response.json();
