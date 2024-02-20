@@ -12,8 +12,7 @@ export default function SignIn() {
 
   return (
     <>
-      <div className={styles.bgStyle}>
-      </div>
+      <div className={styles.bgStyle}></div>
 
       <Box
         sx={{
@@ -74,11 +73,11 @@ export default function SignIn() {
               label="Empresa"
               {...register("company", { required: true })}
             />
-            {/* {errors?.company && (
+            {errors?.company && (
               <Typography variant="caption" color="error">
                 {errors.company.message}
               </Typography>
-            )} */}
+            )}
             <TextField
               sx={{
                 color: "primary.main",
@@ -95,11 +94,11 @@ export default function SignIn() {
               label="Nome"
               {...register("username", { required: true })}
             />
-            {/* {errors?.username && (
+            {errors?.username && (
               <Typography variant="caption" color="error">
                 {errors.username.message}
               </Typography>
-            )} */}
+            )}
             <TextField
               sx={{
                 borderRadius: "8px",
@@ -114,11 +113,11 @@ export default function SignIn() {
               type="password"
               {...register("password", { required: true })}
             />
-            {/* {errors?.password && (
+            {errors?.password && (
               <Typography variant="caption" color="error">
                 {errors.password.message}
               </Typography>
-            )} */}
+            )}
             <Button
               loading={loading}
               sx={{
