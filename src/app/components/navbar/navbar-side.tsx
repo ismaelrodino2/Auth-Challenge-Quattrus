@@ -18,6 +18,7 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import logoProject from "./../../../../public/assets/logoProject.svg";
 import TopBar from "../navbarTop/navBarTop";
+import Link from "next/link";
 
 const drawerWidth = 240;
 
@@ -124,28 +125,38 @@ export function NavBarSide({ children }: { children: React.ReactNode }) {
           </DrawerHeader>
           <Divider />
           <List>
-            {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-              <ListItem key={text} disablePadding sx={{ display: "block" }}>
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
-                    color: "white",
-                  }}
-                >
-                  <ListItemIcon
+            {[
+              { url: "/projetos", text: "Projetos" },
+              { url: "/", text: "Starred" },
+              { url: "/", text: "Send email" },
+              { url: "/", text: "Drafts" },
+            ].map((el, index) => (
+              <ListItem key={el.text} disablePadding sx={{ display: "block" }}>
+                <Link href={el.url} key={el.text}>
+                  <ListItemButton
                     sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
+                      minHeight: 48,
+                      justifyContent: open ? "initial" : "center",
+                      px: 2.5,
                       color: "white",
                     }}
                   >
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : "auto",
+                        justifyContent: "center",
+                        color: "white",
+                      }}
+                    >
+                      {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={el.text}
+                      sx={{ opacity: open ? 1 : 0 }}
+                    />
+                  </ListItemButton>
+                </Link>
               </ListItem>
             ))}
           </List>
