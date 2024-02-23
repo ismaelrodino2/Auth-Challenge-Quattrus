@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import Link from "next/link";
 import { NavBarSide } from "../components/navbar/navbar-side";
 import TopBar from "../components/navbarTop/navBarTop";
+import { BreadCrumb } from "../components/navbarTop/bread-crumb";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -22,11 +22,7 @@ export default function DashboardLayout({
         <section className="px-7 flex gap-7 flex-col overflow-hidden w-full">
           <div className=" pt-6">
             {/* breadcrumb */}
-            <div className="text-lg flex items-center">
-              <KeyboardArrowLeftIcon className="text-aquamarine" />
-              <span className="text-aquamarine mr-1">Dashboard</span> |
-              Cronograma
-            </div>
+            <BreadCrumb />
             {/* text */}
             <div className="flex gap-1 mt-7">
               <span>
